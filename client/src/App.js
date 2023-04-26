@@ -5,9 +5,10 @@ function App() {
 
   // fetch data from server
   useEffect(() => {
-    fetch('/api/test')
+    fetch('/api/data')
       .then((res) => res.json())
-      .then((data) => setData(data.message));
+      .then((data) => setData(data.message))
+      .then((err) => console.log(err));
   }, []);
 
   return (

@@ -8,8 +8,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-app.get('/api/test', (req, res) => {
-  res.send({ message: 'Hello from server!' });
+app.get('/api/data', (req, res) => {
+  const data = {
+    message: 'Hello from server!',
+  };
+  res.json(data);
 });
 
 app.listen(port, () => {
