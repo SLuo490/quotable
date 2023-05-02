@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [data, setData] = useState('');
-  const [category, setCategory] = useState('abcde');
+  const [category, setCategory] = useState('abcdef');
 
   // fetch data from server
   useEffect(() => {
