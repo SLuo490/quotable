@@ -8,9 +8,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-app.get('/api/data', (req, res) => {
+app.get('/api/quotes/:category', (req, res) => {
+  const category = req.params.category;
   const data = {
-    message: 'Hello from server!',
+    message: category,
   };
   res.json(data);
 });
