@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import Home from './pages/Home';
 
 function App() {
-  const [data, setData] = useState('');
-  const [category, setCategory] = useState('abc');
+  // const [data, setData] = useState('');
+  // const [category, setCategory] = useState('abc');
 
   // fetch data from server
-  useEffect(() => {
-    fetch(`/api/quotes/${category}`)
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, [category]);
+  // useEffect(() => {
+  //   fetch(`/api/quotes/${category}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data.message));
+  // }, [category]);
 
   // useEffect(() => {
   //   fetch(`/api/quotes`)
@@ -20,7 +21,8 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <p>{data ? data : 'Loading...'}</p>
+        <Home />
+        {/* <p>{data ? data : 'Loading...'}</p> */}
       </header>
     </div>
   );
