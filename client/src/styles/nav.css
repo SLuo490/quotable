@@ -1,0 +1,29 @@
+:root {
+  --snowWhite: #fffafa;
+  --limeGreen: #adff45;
+}
+
+.ml-200 {
+  margin-left: 200px;
+}
+
+.mr-200 {
+  margin-right: 200px;
+}
+
+.bg-snowWhite {
+  background-color: var(--snowWhite);
+}
+
+.text-limeGreen {
+  color: var(--limeGreen);
+}
+
+.pr-32 {
+  padding-right: 32px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  color: var(--limeGreen) !important;
+}

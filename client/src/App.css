@@ -1,3 +1,8 @@
+:root {
+  --snowWhite: #fffafa;
+  --limeGreen: #adff45;
+}
+
 * {
   font-family: 'Open Sans', sans-serif;
 }
