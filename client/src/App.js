@@ -1,6 +1,7 @@
-// import { useEffect, useState } from 'react';
-import Home from './pages/Home';
+import { Home, Dashboard, Create } from './pages';
 import './App.css';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   // const [data, setData] = useState('');
@@ -20,12 +21,17 @@ function App() {
   // }, []);
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <Home />
-        {/* <p>{data ? data : 'Loading...'}</p> */}
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+        <header className='App-header'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/create' element={<Create />} />
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
