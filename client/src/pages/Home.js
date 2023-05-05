@@ -5,11 +5,11 @@ export default function Home() {
   return (
     <div>
       <Nav />
-      <div className='row'>
-        <div className='col-sm'>
+      <div className='d-flex'>
+        <div className=''>
           <Sidebar />
         </div>
-        <div className='col-sm'>
+        <div className=''>
           <h1>Content</h1>
         </div>
       </div>

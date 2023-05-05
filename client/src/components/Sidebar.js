@@ -82,8 +82,8 @@ export default function Sidebar() {
       style={{ overflowY: 'scroll', height: 'calc(100vh - 70px)' }}
     >
       {categories.map((category, index) => (
-        <div className='text-center pt-2' key={index}>
-          <button className='btn w-50'> {category}</button>
+        <div className='text-center px-2 pt-2' key={index}>
+          <button className='btn w-100'> {category}</button>
         </div>
       ))}
     </div>
