@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import '../styles/sidebar.css';
 
-export default function Sidebar() {
+export default function Sidebar({ onSelectCategory }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     setCategories([
+      'Random',
       'Age',
       'Alone',
       'Amazing',
@@ -76,6 +77,10 @@ export default function Sidebar() {
     ]);
   }, []);
 
+  function handleCategorySelect(category) {
+    onSelectCategory(category);
+  }
+
   return (
     <div
       className='list-unstyled flex-grow-1 overflow-auto'
@@ -83,7 +88,12 @@ export default function Sidebar() {
     >
       {categories.map((category, index) => (
         <div className='text-center px-2 pt-2' key={index}>
-          <button className='btn w-100'> {category}</button>
+          <button
+            className='btn w-100'
+            onClick={() => handleCategorySelect(category)}
+          >
+            {category}
+          </button>
         </div>
       ))}
     </div>
