@@ -1,0 +1,8 @@
+.quotes {
+  margin: 0 -10px;
+}
+
+.quotes > * {
+  flex: 1 1 25%;
+  margin: 10px;
+}

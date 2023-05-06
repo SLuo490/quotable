@@ -1,6 +1,8 @@
 import Nav from '../components/Nav';
 import Sidebar from '../components/Sidebar';
+import Quote from '../components/Quote';
 import { useState, useEffect } from 'react';
+import '../styles/home.css';
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -26,7 +28,18 @@ export default function Home() {
         </div>
         <div className=''>
           <h1>Content</h1>
-          <p>{data}</p>
+          <div className='quotes d-flex flex-wrap'>
+            <Quote />
+            <Quote />
+            <Quote />
+            <Quote />
+            <Quote />
+            <Quote />
+            <Quote />
+            <Quote />
+            <Quote />
+            <Quote />
+          </div>
         </div>
       </div>
     </div>
