@@ -1,17 +1,14 @@
 import React from 'react';
 
-export default function Quote() {
+export default function Quote(props) {
   return (
     <div className='card quote-card'>
-      <div className='card-body'>
-        <p className='card-text text-center'>
-          “The greatest glory in living lies not in never falling, but in rising
-          every time we fall.”
-        </p>
-        <p className='card-text text-end'>-Nelson Mandela</p>
+      <div className='card-body mb-5'>
+        <p className='card-text text-center'>{props.quote.quote}</p>
+        <p className='card-text text-end'>- {props.quote.author}</p>
 
-        <div className='d-flex justify-content-end'>
-          <button className='btn btn-primary'>Like</button>
+        <div className='position-absolute bottom-0 end-0'>
+          <button className='btn btn-primary me-2 mb-2'>Like</button>
         </div>
       </div>
     </div>

@@ -6,7 +6,6 @@ export default function Sidebar({ onSelectCategory }) {
 
   useEffect(() => {
     setCategories([
-      'Random',
       'Age',
       'Alone',
       'Amazing',

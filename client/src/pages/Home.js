@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import '../styles/home.css';
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [data, setData] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('Age');
+  const [data, setData] = useState([]);
 
   function handleCategorySelect(category) {
     setSelectedCategory(category);
@@ -16,8 +16,12 @@ export default function Home() {
   useEffect(() => {
     fetch(`/api/quotes/${selectedCategory}`)
       .then((res) => res.json())
-      .then((data) => setData(data.message));
+      .then((data) => setData(data));
   }, [selectedCategory]);
+
+  const quotes = data.map((quote) => {
+    return <Quote key={quote._id} quote={quote} />;
+  });
 
   return (
     <div>
@@ -26,13 +30,14 @@ export default function Home() {
         <div className=''>
           <Sidebar onSelectCategory={handleCategorySelect} />
         </div>
-        <div className=''>
-          <h1>Content</h1>
+        <div>
+          <h1 className='text-center mt-3'>Quotes</h1>
           <div className='quotes d-flex flex-wrap'>
-            <Quote />
-            <Quote />
-            <Quote />
-            <Quote />
+            {quotes.length > 0 ? (
+              quotes
+            ) : (
+              <h1 className='text-center mt-5'>No quotes found</h1>
+            )}
           </div>
         </div>
       </div>
