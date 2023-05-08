@@ -33,12 +33,6 @@ export default function Home() {
             <Quote />
             <Quote />
             <Quote />
-            <Quote />
-            <Quote />
-            <Quote />
-            <Quote />
-            <Quote />
-            <Quote />
           </div>
         </div>
       </div>
