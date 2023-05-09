@@ -27,17 +27,21 @@ export default function Home() {
     <div>
       <Nav />
       <div className='d-flex'>
-        <div className=''>
+        <div>
           <Sidebar onSelectCategory={handleCategorySelect} />
         </div>
         <div>
-          <h1 className='text-center mt-3'>Quotes</h1>
           <div className='quotes d-flex flex-wrap'>
             {quotes.length > 0 ? (
               quotes
             ) : (
               <h1 className='text-center mt-5'>No quotes found</h1>
             )}
+          </div>
+          <div>
+            <button className='btn btn-primary float-end me-3 mt-3'>
+              More
+            </button>
           </div>
         </div>
       </div>

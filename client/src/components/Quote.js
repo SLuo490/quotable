@@ -1,4 +1,5 @@
 import React from 'react';
+import HeartButton from './HeartButton';
 
 export default function Quote(props) {
   return (
@@ -7,9 +8,7 @@ export default function Quote(props) {
         <p className='card-text text-center'>{props.quote.quote}</p>
         <p className='card-text text-end'>- {props.quote.author}</p>
 
-        <div className='position-absolute bottom-0 end-0'>
-          <button className='btn btn-primary me-2 mb-2'>Like</button>
-        </div>
+        <HeartButton />
       </div>
     </div>
   );

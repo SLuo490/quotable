@@ -83,12 +83,15 @@ export default function Sidebar({ onSelectCategory }) {
   return (
     <div
       className='list-unstyled flex-grow-1 overflow-auto'
-      style={{ overflowY: 'scroll', height: 'calc(100vh - 70px)' }}
+      style={{
+        overflowY: 'scroll',
+        height: 'calc(100vh - 56px)',
+      }}
     >
       {categories.map((category, index) => (
         <div className='text-center px-2 pt-2' key={index}>
           <button
-            className='btn w-100'
+            className='btn btn-sidebar w-100'
             onClick={() => handleCategorySelect(category)}
           >
             {category}

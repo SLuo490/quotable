@@ -4,12 +4,12 @@ const fetch = (...args) =>
 const router = express.Router();
 require('dotenv').config();
 
-// fetch data from https://api.api-ninjas.com/v1/quotes?category={category}&limit=10
+// fetch data from https://api.api-ninjas.com/v1/quotes?category={category}&limit=5
 router.get('/quotes/:category', async (req, res) => {
   const { category } = req.params;
 
   const response = await fetch(
-    `https://api.api-ninjas.com/v1/quotes?category=${category}&limit=10`,
+    `https://api.api-ninjas.com/v1/quotes?category=${category}&limit=6`,
     {
       headers: {
         'X-Api-Key': process.env.REACT_APP_API_KEY,
