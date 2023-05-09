@@ -40,7 +40,7 @@ export default function Home() {
           </div>
           <div>
             <button className='btn btn-primary float-end me-3 mt-3'>
-              More
+              Refresh
             </button>
           </div>
         </div>
