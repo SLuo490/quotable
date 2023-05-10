@@ -15,15 +15,6 @@ export default function Home() {
     setSelectedCategory(category);
   }
 
-  const test = async () => {
-    const docRef = await addDoc(collection(db, 'users'), {
-      first: 'Ada',
-      last: 'Lovelace',
-      born: 1815,
-    });
-    console.log('Document written with ID: ', docRef.id);
-  };
-
   // fetch data from server
   useEffect(() => {
     fetch(`/api/quotes/${selectedCategory}`)
@@ -64,7 +55,6 @@ export default function Home() {
             >
               Refresh
             </button>
-            <button onClick={() => test()}>Test Firebase</button>
           </div>
         </div>
       </div>
