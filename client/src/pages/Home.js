@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { v4 } from 'uuid';
 import '../styles/home.css';
 
+import { db, collection, addDoc } from '../utils/firebase.js';
+
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('Age');
   const [data, setData] = useState([]);
@@ -12,6 +14,15 @@ export default function Home() {
   function handleCategorySelect(category) {
     setSelectedCategory(category);
   }
+
+  const test = async () => {
+    const docRef = await addDoc(collection(db, 'users'), {
+      first: 'Ada',
+      last: 'Lovelace',
+      born: 1815,
+    });
+    console.log('Document written with ID: ', docRef.id);
+  };
 
   // fetch data from server
   useEffect(() => {
@@ -53,6 +64,7 @@ export default function Home() {
             >
               Refresh
             </button>
+            <button onClick={() => test()}>Test Firebase</button>
           </div>
         </div>
       </div>
