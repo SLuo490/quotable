@@ -41,6 +41,7 @@ export default function Home() {
           <Sidebar onSelectCategory={handleCategorySelect} />
         </div>
         <div>
+          <h1 className='text-center mt-3'>{selectedCategory}</h1>
           <div className='quotes d-flex flex-wrap'>
             {quotes.length > 0 ? (
               quotes
