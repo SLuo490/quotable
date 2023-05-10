@@ -18,6 +18,7 @@ export default function Quote(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [docId, setDocId] = useState(null);
 
+  // check if quote is liked
   useEffect(() => {
     const getLikedQuote = async () => {
       const collectionRef = collection(db, 'quotes');
@@ -38,6 +39,7 @@ export default function Quote(props) {
   const handleLike = async () => {
     if (!isLiked) {
       try {
+        // add to firestore if liked
         const docRef = await addDoc(collection(db, 'quotes'), {
           quote: props.quote.quote,
           author: props.quote.author,
@@ -51,6 +53,7 @@ export default function Quote(props) {
       }
     } else {
       try {
+        // delete from firestore if unliked
         await deleteDoc(doc(db, 'quotes', docId));
         setDocId(null);
         setIsLiked(false);

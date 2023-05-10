@@ -19,7 +19,6 @@ export default function Sidebar({ onSelectCategory }) {
       'Business',
       'Car',
       'Change',
-      'Communications',
       'Computers',
       'Cool',
       'Courage',
