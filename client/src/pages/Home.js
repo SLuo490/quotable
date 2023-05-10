@@ -2,6 +2,7 @@ import Nav from '../components/Nav';
 import Sidebar from '../components/Sidebar';
 import Quote from '../components/Quote';
 import { useState, useEffect } from 'react';
+import { v4 } from 'uuid';
 import '../styles/home.css';
 
 export default function Home() {
@@ -20,8 +21,15 @@ export default function Home() {
   }, [selectedCategory]);
 
   const quotes = data.map((quote) => {
-    return <Quote key={quote._id} quote={quote} />;
+    return <Quote key={v4()} quote={quote} />;
   });
+
+  // refresh the page with selected category when clicked
+  function handleRefresh() {
+    fetch(`/api/quotes/${selectedCategory}`)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }
 
   return (
     <div>
@@ -39,7 +47,10 @@ export default function Home() {
             )}
           </div>
           <div>
-            <button className='btn btn-primary float-end me-3 mt-3'>
+            <button
+              className='btn btn-primary float-end me-3 mt-3'
+              onClick={handleRefresh}
+            >
               Refresh
             </button>
           </div>

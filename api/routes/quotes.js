@@ -12,7 +12,7 @@ router.get('/quotes/:category', async (req, res) => {
     `https://api.api-ninjas.com/v1/quotes?category=${category}&limit=6`,
     {
       headers: {
-        'X-Api-Key': process.env.REACT_APP_API_KEY,
+        'X-Api-Key': process.env.API_KEY,
         'Content-Type': 'application/json',
       },
     }
