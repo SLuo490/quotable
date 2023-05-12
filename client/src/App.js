@@ -1,4 +1,4 @@
-import { Home, Dashboard, Create } from './pages';
+import { Home, Dashboard, Create, Edit } from './pages';
 import './App.css';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -18,6 +18,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/create' element={<Create />} />
+            <Route path='/edit/' element={<Edit />} />
           </Routes>
         </header>
       </div>

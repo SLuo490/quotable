@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartEmpty } from '@fortawesome/free-regular-svg-icons';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { db, collection } from '../utils/firebase.js';
 
 import {
@@ -17,6 +19,7 @@ import {
 export default function Quote(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [docId, setDocId] = useState(null);
+  const navigate = useNavigate();
 
   // check if quote is liked
   useEffect(() => {
@@ -66,6 +69,12 @@ export default function Quote(props) {
     }
   };
 
+  const handleEdit = () => {
+    navigate('/edit', {
+      state: { quote: props.quote.quote, author: props.quote.author },
+    });
+  };
+
   return (
     <div className='card quote-card'>
       <div className='card-body mb-5'>
@@ -74,7 +83,7 @@ export default function Quote(props) {
 
         <div className='position-absolute bottom-0 end-0'>
           {props.quote.canEdit && (
-            <button className='btn mb-2'>
+            <button className='btn mb-2' onClick={handleEdit}>
               <FontAwesomeIcon icon={faEdit} color={'black'} />
             </button>
           )}
