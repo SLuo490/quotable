@@ -71,7 +71,11 @@ export default function Quote(props) {
 
   const handleEdit = () => {
     navigate('/edit', {
-      state: { quote: props.quote.quote, author: props.quote.author },
+      state: {
+        quote: props.quote.quote,
+        author: props.quote.author,
+        id: docId,
+      },
     });
   };
 
@@ -80,7 +84,6 @@ export default function Quote(props) {
       <div className='card-body mb-5'>
         <p className='card-text text-center'>{props.quote.quote}</p>
         <p className='card-text text-end'>- {props.quote.author}</p>
-
         <div className='position-absolute bottom-0 end-0'>
           {props.quote.canEdit && (
             <button className='btn mb-2' onClick={handleEdit}>

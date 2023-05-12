@@ -4,12 +4,11 @@ import ErrorAlert from '../components/ErrorAlert';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-import { db, collection } from '../utils/firebase.js';
-import { addDoc } from 'firebase/firestore';
+import { db } from '../utils/firebase.js';
+import { doc, updateDoc } from 'firebase/firestore';
 
 export default function Edit() {
   const location = useLocation();
-  console.log(location.state);
   const [quote, setQuote] = useState(location.state?.quote || '');
   const [author, setAuthor] = useState(location.state?.author || 'Anonymous');
   const [error, setError] = useState('');
@@ -46,13 +45,14 @@ export default function Edit() {
 
     try {
       // add quote to firebase
-      const docRef = await addDoc(collection(db, 'quotes'), {
+      const quoteRef = doc(db, 'quotes', location.state.id);
+      await updateDoc(quoteRef, {
         quote: quote,
         author: author,
         canEdit: true,
         time: new Date(),
       });
-      console.log('Document written with ID: ', docRef.id);
+      console.log('Document updated with ID: ', quoteRef.id);
     } catch (e) {
       console.error('Error adding document: ', e);
     }
@@ -94,7 +94,7 @@ export default function Edit() {
             className='btn btn-primary float-end mt-3'
             onClick={handleSubmit}
           >
-            Submit
+            Edit
           </button>
           <button
             className='btn btn-secondary float-end mt-3 me-2'
