@@ -1,4 +1,6 @@
 import Nav from '../components/Nav';
+import ErrorAlert from '../components/ErrorAlert';
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,7 +9,8 @@ import { addDoc } from 'firebase/firestore';
 
 export default function Create() {
   const [quote, setQuote] = useState('');
-  const [author, setAuthor] = useState('');
+  const [author, setAuthor] = useState('Anonymous');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   function handleQuoteChange(e) {
@@ -18,14 +21,34 @@ export default function Create() {
     setAuthor(e.target.value);
   }
 
+  function handleCancel(e) {
+    e.preventDefault();
+    setQuote('');
+    setAuthor('');
+    setError('');
+    navigate('/dashboard');
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // form validation
+    if (!quote || !author) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    if (quote.length > 200) {
+      return setError('Quote cannot be more than 200 characters');
+    }
 
     try {
       // add quote to firebase
       const docRef = await addDoc(collection(db, 'quotes'), {
         quote: quote,
         author: author,
+        canEdit: true,
+        time: new Date(),
       });
       console.log('Document written with ID: ', docRef.id);
     } catch (e) {
@@ -38,6 +61,7 @@ export default function Create() {
     <div>
       <Nav />
       <h1 className='text-center mt-3'>Create</h1>
+      {error && <ErrorAlert details={error} />}
       <div className='container d-flex justify-content-center'>
         <form action='/dashboard' className='w-75'>
           <div className='mb-3'>
@@ -59,6 +83,7 @@ export default function Create() {
               type='text'
               className='form-control'
               id='author'
+              value={author}
               onChange={handleAuthorChange}
             />
           </div>
@@ -67,6 +92,12 @@ export default function Create() {
             onClick={handleSubmit}
           >
             Submit
+          </button>
+          <button
+            className='btn btn-secondary float-end mt-3 me-2'
+            onClick={handleCancel}
+          >
+            Cancel
           </button>
         </form>
       </div>

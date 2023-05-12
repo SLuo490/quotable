@@ -1,7 +1,7 @@
 import Nav from '../components/Nav';
 import Quote from '../components/Quote';
 import { db } from '../utils/firebase.js';
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { v4 } from 'uuid';
 
@@ -11,7 +11,7 @@ export default function Dashboard() {
   useEffect(() => {
     const getLikedQuotes = async () => {
       const collectionRef = collection(db, 'quotes');
-      const q = query(collectionRef);
+      const q = query(collectionRef, orderBy('time', 'desc'));
 
       const unSubscribe = onSnapshot(q, (querySnapshot) => {
         const quotes = [];
@@ -35,7 +35,7 @@ export default function Dashboard() {
             return <Quote key={v4()} quote={quote} />;
           })
         ) : (
-          <h1 className='text-center mt-5'>No quotes found</h1>
+          <h5 className='text-center mt-3'>No quotes found</h5>
         )}
       </div>
     </div>

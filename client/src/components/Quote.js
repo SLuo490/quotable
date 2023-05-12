@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartEmpty } from '@fortawesome/free-regular-svg-icons';
 import { useState, useEffect } from 'react';
 import { db, collection } from '../utils/firebase.js';
@@ -44,6 +44,8 @@ export default function Quote(props) {
           quote: props.quote.quote,
           author: props.quote.author,
           category: props.quote.category,
+          canEdit: false,
+          time: new Date(),
         });
         setDocId(docRef.id);
         setIsLiked(true);
@@ -71,6 +73,11 @@ export default function Quote(props) {
         <p className='card-text text-end'>- {props.quote.author}</p>
 
         <div className='position-absolute bottom-0 end-0'>
+          {props.quote.canEdit && (
+            <button className='btn mb-2'>
+              <FontAwesomeIcon icon={faEdit} color={'black'} />
+            </button>
+          )}
           <button className='btn me-2 mb-2' onClick={handleLike}>
             <FontAwesomeIcon
               icon={isLiked ? faHeart : faHeartEmpty}
