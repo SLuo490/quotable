@@ -5,8 +5,6 @@ import { useState, useEffect } from 'react';
 import { v4 } from 'uuid';
 import '../styles/home.css';
 
-import { db, collection, addDoc } from '../utils/firebase.js';
-
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('Age');
   const [data, setData] = useState([]);
